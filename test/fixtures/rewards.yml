@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  pledge: 1
+  description: MyText
+  deliverytime: 2019-07-02
+  limit: 1
+  ships: 1
+
+two:
+  title: MyString
+  pledge: 1
+  description: MyText
+  deliverytime: 2019-07-02
+  limit: 1
+  ships: 1

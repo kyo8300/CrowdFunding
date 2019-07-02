@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  subtitle: MyText
+  category: 1
+  image: MyString
+  goal: 1
+  duration: 2019-07-02
+  story: MyText
+  location: 1
+
+two:
+  title: MyString
+  subtitle: MyText
+  category: 1
+  image: MyString
+  goal: 1
+  duration: 2019-07-02
+  story: MyText
+  location: 1
