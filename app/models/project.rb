@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
     belongs_to :user
+    validates :user_id, presence: true
     has_many :rewards, dependent: :destroy
 
     validate :duration_cannot_be_in_the_past
@@ -12,6 +13,6 @@ class Project < ApplicationRecord
 
     private
       def duration_cannot_be_in_the_past
-          errors.add(:duration, "can't be in the past") if !duration.blank? || duration < Date.today
+          errors.add(:duration, "can't be in the past") if duration < Date.today
       end
 end

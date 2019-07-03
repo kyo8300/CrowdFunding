@@ -1,0 +1,53 @@
+<%= form_with model: @project, local: true do |f| %>
+
+  <% if @project.errors.any? %>
+    <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subtitle %>
+    <%= f.text_area :subtitle, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goal %>
+    <%= f.number_field :goal, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.date_field :duration, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.select :location, Project.locations.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :story %>
+    <%= f.text_area :story, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image, :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit", disable_with: 'Submiting...' %>
+  </div>
+
+<% end %>
