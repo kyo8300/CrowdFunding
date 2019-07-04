@@ -10,12 +10,21 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        @project = current_user.projects.build(project_params)
-        if @project.save
-            flash[:notice] = "The Basics have been successfully saved."
-            redirect_to root_path
+        @project = current_user.projects.create!(
+            title: nil, subtitle: nil, category: nil, image: nil, goal: 1, duration: Date.today + 1, story: nil, location: nil
+        )
+        redirect_to edit_project_path(@project)
+    end
+
+    def edit
+    end
+
+    def update
+        if @project.update_attributes(project_params)
+            flash[:notice] = "Basics was successfully updated."
+            redirect_to project_rewards_path(@project)
         else
-            render 'projects/new'
+            redirect_to edit_project_path(@project)
         end
     end
 

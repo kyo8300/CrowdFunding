@@ -1,0 +1,44 @@
+<h1>Rewards</h1>
+
+<%= form_with model: @reward, url: project_rewards_path,local: true do |f| %>
+  <% if @project.errors.any? %>
+    <% @project.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pledge %>
+    <%= f.number_field :pledge, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deliverytime %>
+    <%= f.date_field :deliverytime, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :limit %>
+    <%= f.number_field :limit, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ships %>
+    <%= f.select :ships, Reward.ships.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", disable_with: 'Submiting...' %>
+  </div>
+
+<% end %>

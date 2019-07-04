@@ -1,0 +1,20 @@
+<h1>Rewards</h1>
+<div class="select-mode">
+    <ol>
+      <li><%= link_to "Basics", edit_project_path(@project) %></li>
+      <li><%= link_to "Rewards", project_rewards_path(@project) %></li>
+    </ol>
+<div>
+<% if @reward.nil? %>
+  <h3>You don't have any rewards yet.</h3>
+<% else %>
+  <%= @rewards.each do |reward| %>
+    <%= reward.pledge %>
+    <%= reward.description %>
+    <%= reward.deliverytime %>
+    <%= reward.limit %>
+    <%= reward.ships %>
+  <% end %>
+<% end %>
+
+<%= link_to "Add a reward", new_project_reward_path %>
