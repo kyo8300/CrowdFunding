@@ -1,18 +1,17 @@
 class RewardsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_project
+    before_action :set_reward, only: [:edit, :update, :destroy]
 
     def index
-        @project = current_user.projects.find(params[:project_id])
         @rewards = @project.rewards
     end
 
     def new
-        @project = current_user.projects.find(params[:project_id])
         @reward = @project.rewards.build
     end
 
     def create
-        @project = current_user.project.find(params[:project_id])
         @reward = @project.rewards.build(reward_params)
         if @reward.save
             flash[:notice] = "The Reward was successfully added."
@@ -25,8 +24,32 @@ class RewardsController < ApplicationController
     def edit
     end
 
+    def update
+        if @reward.update_attributes(reward_params)
+            flash[:notice] = "The reward was successfully updated."
+            redirect_to project_rewards_path(@project)
+        else
+            redirect_to edit_project_reward_path(@reward.project_id,@reward)
+        end
+    end
+
+    def destroy
+        @reward.destroy
+
+        flash[:notice] = "The reward was successfully deleted."
+        redirect_to project_rewards_path
+    end
+
     private
       def reward_params
         params.require(:reward).permit(:title, :pledge, :description, :deliverytime, :limit, :ships)
+      end
+
+      def set_project
+        @project = current_user.projects.find(params[:project_id])
+      end
+
+      def set_reward
+        @reward = @project.rewards.find(params[:id])
       end
 end

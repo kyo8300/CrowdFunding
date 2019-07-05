@@ -1,6 +1,6 @@
 <h1>Rewards</h1>
 
-<%= form_with model: @reward, url: project_rewards_path, local: true do |f| %>
+<%= form_with model: @reward, url: project_reward_path, local: true do |f| %>
   <% if @reward.errors.any? %>
     <% @reward.errors.full_messages.each do |message| %>
       <li> <%= message %> </li>
