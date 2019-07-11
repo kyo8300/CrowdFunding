@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :rewards
   end
+
+  resources :stories, only: [:edit, :update]
 end
