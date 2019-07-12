@@ -1,0 +1,16 @@
+<div class="select-mode">
+  <ol>
+    <li><%= link_to "Basics", edit_project_path(@project) %></li>
+    <li><%= link_to "Rewards", project_rewards_path(@project) %></li>
+    <li><%= link_to "Story", edit_story_path(@project) %></li>
+  </ol>
+<div>
+
+<div class="request">
+  <p>Submit your project</p>
+  <% if false %>
+   <%= form_with model: @project, url: _path, local: true do |f| %>
+     <%= f.submit 'Submit your project.', data: { confirm: 'Are you sure?', disable_with: 'Submitting...'} %>
+   <% end %>
+  <% end %>
+</div>

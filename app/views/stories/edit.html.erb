@@ -1,12 +1,6 @@
 <h1>Story</h1>
-<%= form_with model: @project, local: true do |f| %>
-  <div class="select-mode">
-    <ol>
-      <li><%= link_to "Basics", edit_project_path(@project) %></li>
-      <li><%= link_to "Rewards", project_rewards_path(@project) %></li>
-      <li><%= link_to "Story", edit_story_path(@project) %></li>
-    </ol>
-  <div>
+<%= form_with model: @project, url: story_path, local: true do |f| %>
+  <%= render 'layouts/projectnav' %>
   <% if @project.errors.any? %>
     <% @project.errors.full_messages.each do |message| %>
       <li> <%= message %> </li>

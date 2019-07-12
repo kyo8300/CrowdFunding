@@ -1,11 +1,5 @@
 <h1>Rewards</h1>
-<div class="select-mode">
-    <ol>
-      <li><%= link_to "Basics", edit_project_path(@project) %></li>
-      <li><%= link_to "Rewards", project_rewards_path(@project) %></li>
-      <li><%= link_to "Story", edit_story_path(@project) %></li>
-    </ol>
-<div>
+<%= render 'layouts/projectnav' %>
 
 <div>
   <% if @rewards.empty? %>
