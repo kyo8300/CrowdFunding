@@ -6,11 +6,10 @@
   </ol>
 <div>
 
-<div class="request">
-  <p>Submit your project</p>
-  <% if false %>
-   <%= form_with model: @project, url: _path, local: true do |f| %>
-     <%= f.submit 'Submit your project.', data: { confirm: 'Are you sure?', disable_with: 'Submitting...'} %>
-   <% end %>
+<div id = "request">
+  <% unless @project.reviewing? %>
+    <%= form_with model: @project, url: submit_project_path(@project) do |f| %>
+      <%= f.submit 'Submit your project.', data: { confirm: 'Are you sure?', disable_with: 'Submitting...'} %>
+    <% end %>
   <% end %>
 </div>

@@ -1,13 +1,13 @@
 <h1>Basics</h1>
-<%= form_with model: @project, local: true do |f| %>
-  <%= render 'layouts/projectnav' %>
-  
-  <% if @project.errors.any? %>
-    <% @project.errors.full_messages.each do |message| %>
-      <li> <%= message %> </li>
-    <% end %>
-  <% end %>
+<%= render 'layouts/projectnav' %>
 
+<% if @project.errors.any? %>
+  <% @project.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+  <% end %>
+<% end %>
+
+<%= form_with model: @project, local: true do |f| %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :required => true %>

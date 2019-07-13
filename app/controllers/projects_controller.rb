@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
-    before_action :set_project, only: [:show, :edit, :update]
+    before_action :set_project, only: [:show, :edit, :update, :submit]
 
     def index
     end
@@ -26,6 +26,10 @@ class ProjectsController < ApplicationController
         else
             redirect_to edit_project_path(@project)
         end
+    end
+
+    def submit
+        @project.update_attributes(reviewing: true)
     end
 
     private

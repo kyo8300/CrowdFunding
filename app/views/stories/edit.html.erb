@@ -1,11 +1,14 @@
 <h1>Story</h1>
-<%= form_with model: @project, url: story_path, local: true do |f| %>
-  <%= render 'layouts/projectnav' %>
-  <% if @project.errors.any? %>
-    <% @project.errors.full_messages.each do |message| %>
-      <li> <%= message %> </li>
-    <% end %>
+
+<%= render 'layouts/projectnav' %>
+
+<% if @project.errors.any? %>
+  <% @project.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
   <% end %>
+<% end %>
+
+<%= form_with model: @project, url: story_path, local: true do |f| %>
 
   <div class="field">
     <%= f.label :story %>

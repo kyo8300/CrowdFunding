@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root 'projects#index'
   resources :projects do
     resources :rewards
+    member do
+      patch :submit
+    end
   end
 
   resources :stories, only: [:edit, :update]
