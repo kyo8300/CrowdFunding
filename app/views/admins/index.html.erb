@@ -1,0 +1,32 @@
+<h2>Projects List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Funding Goal</th>
+      <th scope="col">Campaign Duration</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @reviewing_projects.each do |reviewing_project| %>
+
+    <% if reviewing_project.errors.any? %>
+      <% reviewing_project.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    <% end %>
+
+    <tr>
+      <th scope="row"><%= reviewing_project.id %></th>
+      <td><%= reviewing_project.goal %></td>
+      <td><%= reviewing_project.duration %></td>
+      <td><%= reviewing_project.user.email %></td>
+      <td><%= reviewing_project.created_at %></td>
+      <td class="btn btn-success"><%= link_to "Approve", approve_admin_path(reviewing_project), method: :patch, class: "text-white" %></td>
+      <td class="btn btn-danger ml-2 px-4"><%= link_to "Reject", reject_admin_path(reviewing_project), method: :patch, class: "text-white" %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>

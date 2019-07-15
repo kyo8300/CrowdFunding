@@ -1,2 +1,11 @@
-<h1>Hello world</h1>
 <%= link_to "Start a project", new_project_path %>
+
+<div>
+    <% @projects.each do |project| %>
+      <%= project.id %>
+      <%= project.title %>
+      <%= project.goal %>
+      <%= project.duration %>
+      <br>
+    <% end %>
+</div>

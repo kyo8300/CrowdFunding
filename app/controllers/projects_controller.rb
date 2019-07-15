@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :submit]
 
     def index
+        @projects = Project.where(reviewing: true).where(reviewed: true)
     end
 
     def new
@@ -24,12 +25,19 @@ class ProjectsController < ApplicationController
             flash[:notice] = "Basics was successfully updated."
             redirect_to project_rewards_path(@project)
         else
-            redirect_to edit_project_path(@project)
+            render 'edit'
+            #redirect_to edit_project_path(@project)
         end
     end
 
     def submit
-        @project.update_attributes(reviewing: true)
+        if @project.update_attributes(reviewing: true)
+            flash[:notice] = "Your project was successfully submitted. Your project will be reviewed by ours. Please wait a few days until notification will come."
+            redirect_to root_path
+        else
+            puts @project.errors.full_messages
+            redirect_to edit_project_path(@project)
+        end
     end
 
     private

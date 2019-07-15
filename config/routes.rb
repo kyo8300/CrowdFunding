@@ -9,5 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :admins do
+    member do
+      patch :approve
+      patch :reject
+    end
+  end
+
   resources :stories, only: [:edit, :update]
 end

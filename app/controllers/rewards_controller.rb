@@ -29,7 +29,7 @@ class RewardsController < ApplicationController
             flash[:notice] = "The reward was successfully updated."
             redirect_to project_rewards_path(@project)
         else
-            redirect_to edit_project_reward_path(@reward.project_id,@reward)
+            render 'edit'
         end
     end
 
