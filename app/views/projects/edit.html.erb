@@ -27,6 +27,13 @@
   </div>
 
   <div class="field">
+    <%= f.label :image %>
+    <%= image_tag(@project.image.thumb.url) if @project.image? %>
+    <%= f.file_field :image, :required => true %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="field">
     <%= f.label :goal %>
     <%= f.number_field :goal, :required => true %>
   </div>

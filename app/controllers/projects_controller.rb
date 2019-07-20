@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
     def submit
         if @project.update_attributes(reviewing: true)
-            flash[:notice] = "Your project was successfully submitted. Your project will be reviewed by ours. Please wait a few days until notification will come."
+            flash[:notice] = "Your project was successfully submitted. Your project will be reviewed by us. Please wait a few days until notification will come."
             redirect_to root_path
         else
             puts @project.errors.full_messages

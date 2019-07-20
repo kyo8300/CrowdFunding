@@ -41,6 +41,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'summernote-rails', '~> 0.8.12.0'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
