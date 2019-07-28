@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :rewards
     member do
       patch :submit
+      get :preview
     end
   end
 

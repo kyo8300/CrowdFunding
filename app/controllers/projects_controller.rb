@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
-    before_action :set_project, only: [:show, :edit, :update, :submit]
+    before_action :set_project, only: [:show, :edit, :update, :submit, :preview]
 
     def index
         @projects = Project.where(reviewing: true).where(reviewed: true)
@@ -38,6 +38,9 @@ class ProjectsController < ApplicationController
             puts @project.errors.full_messages
             redirect_to edit_project_path(@project)
         end
+    end
+
+    def preview
     end
 
     private

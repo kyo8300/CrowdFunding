@@ -11,5 +11,7 @@
     <%= form_with model: @project, url: submit_project_path(@project) do |f| %>
       <%= f.submit 'Submit your project.', data: { confirm: 'Are you sure?', disable_with: 'Submitting...'} %>
     <% end %>
+
+    <%= link_to "Preview", preview_project_path(@project) %>
   <% end %>
 </div>

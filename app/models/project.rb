@@ -11,6 +11,10 @@ class Project < ApplicationRecord
     enum category: { Arts: 0, Comics_Illustrator: 1, Design_Tech: 2, Film: 3, Food_Craft: 4, Games: 5, Music: 6, Pablishing: 7}
     enum location: { Taiwan: 0, Japan: 1, Others: 2}
 
+    def date_diff
+      dif = self.duration - Date.today
+      return dif.to_i
+    end
 
     private
       def duration_cannot_be_in_the_past
