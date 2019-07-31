@@ -16,3 +16,9 @@
 
 @import "bootstrap";
 @import "summernote-bs4";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.story.pl-4.col-md-8.col-xs-12{
+    word-wrap: break-word;
+}
