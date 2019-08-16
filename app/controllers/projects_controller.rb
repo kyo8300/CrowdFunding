@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :submit, :preview]
 
     def index
-        @projects = Project.where(reviewing: true).where(reviewed: true)
+        @projects = Project.where(reviewing: true).where(reviewed: true).limit(30)
     end
 
     def new

@@ -22,3 +22,37 @@
 .story.pl-4.col-md-8.col-xs-12{
     word-wrap: break-word;
 }
+
+//project/index
+
+$blue: #4C49A2;
+
+.space-2 {
+  padding-top:7rem;
+    padding-bottom:7rem;
+}
+
+a.card-text {
+  color:inherit;
+}
+a:hover {
+  color:$blue;
+  text-decoration:none;
+}
+
+.project-title {
+  display: block;
+  height: 4rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.project-img:hover {
+  cursor:pointer;
+  filter: alpha(opacity=60);        /* ie lt 8 */
+  -ms-filter: "alpha(opacity=60)";  /* ie 8 */
+  -moz-opacity:0.6;                 /* FF lt 1.5, Netscape */
+  -khtml-opacity: 0.6;              /* Safari 1.x */
+  opacity:0.6;
+  zoom:1;
+}
