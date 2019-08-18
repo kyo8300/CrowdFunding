@@ -1,15 +1,17 @@
-   <%= link_to "Start a project", new_project_path %>
+   <div class="new-project text-center py-5 border bg-light">
+     <%= link_to "Start a project", new_project_path, :class => "btn btn-info btn-lg" %>
+   </div>
 
    <div class="container">
       <div class="row d-flex">
          <% @projects.each do |project| %>
-         <div class="col-lg-3 col-md-4 col-sm-6 col-6 mt-5">
+         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5">
             <!-- Card -->
 
             <div class="card border-0 shadow">
                <!-- Card image -->
                <div class="view">
-                 <%= link_to "#", :class => "project-img" do %>
+                 <%= link_to project_path(project), :class => "project-img" do %>
                   <% if project.image? %>
                     <%= image_tag project.image.url, alt: 'project image', :class => "img-fluid card-img-top rounded-top" %>
                   <% else %>
@@ -23,7 +25,8 @@
                <!-- Card content -->
                <div class="card-body border rounded-bottom">
                   <a href="#" class="card-text small mb-2 d-block"><%= project.category %></a>
-                  <!-- Title --><a href="#" class="card-title project-title"><%= project.title %></a>
+                  <!-- Title -->
+                  <%= link_to project_path(project), :class => "card-title project-title" do %><%= project.title %><% end %>
                   <!-- Description -->
                   <hr>
                   <ul class="list-unstyled d-flex justify-content-between mb-3 text-center small">

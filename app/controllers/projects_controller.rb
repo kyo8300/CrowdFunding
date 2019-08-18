@@ -1,9 +1,14 @@
 class ProjectsController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
-    before_action :set_project, only: [:show, :edit, :update, :submit, :preview]
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :correct_user, only: [:edit, :update, :submit, :preview]
+    before_action :set_project, only: [:edit, :update, :submit, :preview]
 
     def index
         @projects = Project.where(reviewing: true).where(reviewed: true).limit(30)
+    end
+
+    def show
+        @project = Project.find(params[:id])
     end
 
     def new
@@ -46,6 +51,11 @@ class ProjectsController < ApplicationController
     private
       def project_params
         params.require(:project).permit(:title, :subtitle, :category, :image, :goal, :duration, :story, :location)
+      end
+
+      def correct_user
+        @project = current_user.projects.find_by(id: params[:id])
+        redirect_to root_path if @project.nil?
       end
 
       def set_project

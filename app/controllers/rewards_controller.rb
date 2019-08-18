@@ -1,5 +1,6 @@
 class RewardsController < ApplicationController
     before_action :authenticate_user!
+    before_action :correct_user
     before_action :set_project
     before_action :set_reward, only: [:edit, :update, :destroy]
 
@@ -43,6 +44,11 @@ class RewardsController < ApplicationController
     private
       def reward_params
         params.require(:reward).permit(:title, :pledge, :description, :deliverytime, :limit, :ships)
+      end
+
+      def correct_user
+        @project = current_user.projects.find_by(id: params[:project_id])
+        redirect_to root_path if @project.nil?
       end
 
       def set_project

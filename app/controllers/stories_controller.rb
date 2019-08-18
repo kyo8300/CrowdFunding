@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
     before_action :authenticate_user!
+    before_action :correct_user
     before_action :set_project, only: [:edit, :update]
 
     def edit
@@ -18,6 +19,11 @@ class StoriesController < ApplicationController
     private
       def story_params
         params.require(:project).permit(:story)
+      end
+
+      def correct_user
+        @project = current_user.projects.find_by(id: params[:id])
+        redirect_to root_path if @project.nil?
       end
 
       def set_project
