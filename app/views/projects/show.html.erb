@@ -47,9 +47,7 @@
             <div class="story pl-3 col-md-8 col-xs-12 mb-4">
               <h3 class="mb-5">About</h3>
               <div class="summer" id="foo">
-                <% unless @project.story.nil? %>
-                  <%= @project.story.html_safe %>
-                <% end %>
+                <%= @project.story.html_safe %>
               </div>
             </div>
 

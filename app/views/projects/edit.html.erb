@@ -1,55 +1,121 @@
 <h1>Basics</h1>
 <%= render 'layouts/projectnav' %>
 
-<%= form_with model: @project, local: true do |f| %>
+<div class="basic-form mt-5 container">
 
-  <% if @project.errors.any? %>
-    <ul>
-    <% @project.errors.full_messages.each do |message| %>
-      <li><%= message %> </li>
+  <%= form_with model: @project, local: true do |f| %>
+
+    <% if @project.errors.any? %>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
+
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class=" font-weight-bold"><%= f.label :title %></label>
+      <p>Write a catchy and simple title.</p>
+    </div>
+    <div class="col-sm-6">
+      <%= f.text_field :title, :class => "form-control", :placeholder => "Please enter your project title.", onkeyup: 'ShowLength(value)', :maxlength => '30' %>
+      <div id="wordcnt" class="text-right">
+        <% if @project.title.present? %>
+          <%= @project.title.length %>/30
+        <% else %>
+          0/30
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :subtitle %></label>
+      <p>Write a project summary in about two lines.</p>
+    </div>
+    <div class="col-sm-6">
+      <%= f.text_area :subtitle, :class => "form-control", :placeholder => "Please enter your project's subtitle."%>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :category %></label>
+      <p>Please choose the category.</p>
+    </div>
+    <div class="col-sm-2">
+      <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, {},:class => "custom-select" %>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :image %></label>
+      <p>Add an image that attract viewer's attention.</p>
+      <p>preferred image size: 1024x576 pixels (16 : 9 ratio).</p>
+    </div>
+    <div class="col-sm-6" onClick="$('#file').click()">
+      <%= f.file_field :image, :class => "form-control-file", id: "file" %>
+      <%= f.hidden_field :image_cache %>
+      <div id="img_field" class="mt-5">
+        <%= image_tag(@project.image.thumb.url) if @project.image? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :goal %></label>
+      <p>Set your project goal. </p>
+      <p>Note that funding is All-or-Nothing.</p>
+      <p>So please make sure not to set an unachievable goal.</p>
+    </div>
+    <div class="col-sm-2">
+      <%= f.number_field :goal, :class => "form-control", :placeholder => "300" %>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :duration %></label>
+      <p>Set a time limit.</p>
+      <p>Projects with a duration of 65 days or less have a higher success rate.</p>
+    </div>
+    <div class="col-sm-3">
+      <%= f.date_field :duration, :class => "custom-select" %>
+    </div>
+  </div>
+
+  <div class="form-group row mt-5 mb-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2 col-form-label mr-5 project-label">
+      <label class="font-weight-bold"><%= f.label :location %></label>
+      <p>Choose your location of project.</p>
+    </div>
+    <div class="col-sm-2">
+      <%= f.select :location, Project.locations.keys.map {|k| [k, k]}, {}, :class => "custom-select" %>
+    </div>
+  </div>
+
+  <div class="fixed-bottom text-center border-top bg-light py-2">
+    <%= link_to "Preview", preview_project_path(@project), :class => "btn btn-success btn-lg px-4 mr-5" %>
+    <%= f.submit "Save", disable_with: 'Submiting...', :class => "btn btn-info btn-lg px-5 " %>
+  </div>
+
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :subtitle %>
-    <%= f.text_area :subtitle, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :category %>
-    <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= image_tag(@project.image.thumb.url) if @project.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
-
-  <div class="field">
-    <%= f.label :goal %>
-    <%= f.number_field :goal, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :duration %>
-    <%= f.date_field :duration, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.select :location, Project.locations.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Save", disable_with: 'Submiting...' %>
-  </div>
-
-<% end %>
+<script>
+  BorderDevice();
+  window.onresize = function() {
+    BorderDevice();
+  }
+</script>
