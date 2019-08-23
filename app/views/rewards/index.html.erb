@@ -1,22 +1,30 @@
 <h1>Rewards</h1>
 <%= render 'layouts/projectnav' %>
 
-<div>
-  <% if @rewards.empty? %>
-    <h3>You don't have any rewards yet.</h3>
-  <% else %>
-    <% @rewards.each do |reward| %>
-      <%= reward.title %>
-      <%= reward.pledge %>
-      <%= reward.description %>
-      <%= reward.deliverytime %>
-      <%= reward.limit %>
-      <%= reward.ships %>
-      <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward) %>
-      <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'} %>
-      <br>
-    <% end %>
-  <% end %>
-</div>
+<div class="container">
 
-<%= link_to "Add a reward", new_project_reward_path %>
+  <div class="text-center my-5">
+    <%= link_to new_project_reward_path, :class => "btn btn-outline-secondary btn-lg btn-block py-5" do %>
+      <%= icon('fas', 'plus-square', :class => "mr-2") %> Add a reward
+    <% end %>
+  </div>
+
+  <div class="">
+    <% if @rewards.empty? %>
+      <h3 class="text-center">You don't have any rewards yet.</h3>
+    <% else %>
+      <% @rewards.each do |reward| %>
+        <%= reward.title %>
+        <%= reward.pledge %>
+        <%= reward.description %>
+        <%= reward.deliverytime %>
+        <%= reward.limit %>
+        <%= reward.ships %>
+        <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward) %>
+        <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

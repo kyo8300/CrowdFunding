@@ -1,44 +1,91 @@
-<h1>Rewards</h1>
+<h1 class="text-center my-5">Rewards</h1>
 
-<%= form_with model: @reward, url: project_rewards_path, local: true do |f| %>
-  <% if @reward.errors.any? %>
-    <% @reward.errors.full_messages.each do |message| %>
-      <li> <%= message %> </li>
+<div class="basic-form mt-5 container">
+  <%= form_with model: @reward, url: project_rewards_path, local: true do |f| %>
+    <% if @reward.errors.any? %>
+      <% @reward.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
     <% end %>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :title %></label>
+        <p>Write a brief description of your reward.</p>
+      </div>
+      <div class="col-sm-6">
+        <%= f.text_field :title, :class => "form-control", :placeholder => "Merchandising products, Message cards, etc"%>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :pledge %></label>
+        <p>Set a minimum pledge amount for this reward.</p>
+      </div>
+      <div class="col-sm-2">
+        <%= f.number_field :pledge, :class => "form-control", :placeholder => "10" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :description %></label>
+        <p>Write a description of your reward in more detail.</p>
+      </div>
+      <div class="col-sm-6">
+        <%= f.text_area :description, :class => "form-control", :placeholder => "Please enter your reward's description."%>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :deliverytime %></label>
+        <p>Please set the delivery date.</p>
+      </div>
+      <div class="col-sm-3">
+        <%= f.date_field :deliverytime, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :limit %></label>
+        <p>If the quantity of reward is limited, please fill in.</p>
+      </div>
+      <div class="custom-control custom-checkbox col-sm-2 ml-3">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" onclick="LimitClick()">
+        <label class="custom-control-label" for="customCheck1">Limit availability</label>
+        <%= f.number_field :limit, :id => "togglelimit", :class => "form-control mt-3 pr-3", :placeholder => "100", :style => 'display: none;'%>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 col-form-label mr-5 project-label">
+        <label class="font-weight-bold"><%= f.label :ships %></label>
+        <p>Write a project summary in about two lines.</p>
+      </div>
+      <div class="col-sm-2">
+        <%= f.select :ships, Reward.ships.keys.map {|k| [k, k]}, {}, :class => "custom-select" %>
+      </div>
+    </div>
+
+    <div class="actions text-center">
+      <%= f.submit "Save", disable_with: 'Submiting...', :class => "btn btn-info btn-lg px-5" %>
+    </div>
+
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pledge %>
-    <%= f.number_field :pledge, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :deliverytime %>
-    <%= f.date_field :deliverytime, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :limit %>
-    <%= f.number_field :limit, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ships %>
-    <%= f.select :ships, Reward.ships.keys.map {|k| [k, k]}, :class => "custom-select", :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Save", disable_with: 'Submiting...' %>
-  </div>
-
-<% end %>
+<script>
+  BorderDevice();
+  window.onresize = function() {
+    BorderDevice();
+  }
+</script>

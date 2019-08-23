@@ -17,7 +17,17 @@ function BorderDevice(){
     }
 }
 
-//
+//リターンがlimitかどうか
+function LimitClick(){
+    let limit = document.getElementById('togglelimit');
+    if( limit.style.display == 'none' ){
+        limit.style.display = 'inline';
+    } else{
+        limit.style.display = 'none';
+    }
+}
+
+//画像のプレビュー
 $(function(){
     $fileField = $('#file')
 
