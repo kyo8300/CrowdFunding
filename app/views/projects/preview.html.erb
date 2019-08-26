@@ -61,7 +61,7 @@
                         <h5 class="card-title">Pledge $<%= reward.pledge %> or more</h5>
                         <div class="card-text">
                           <h6><%= reward.title %></h6>
-                          <p class="text-secondary"><%= reward.description %></p>
+                          <p class="text-secondary"><%= simple_format(h(reward.description)) %></p>
                           <% if reward.limit != 0 %>
                           <div class="limit">
                             <p class="text-secondary mb-0">LIMITED:</p>

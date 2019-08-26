@@ -2,21 +2,35 @@
 
 <%= render 'layouts/projectnav' %>
 
-<% if @project.errors.any? %>
-  <% @project.errors.full_messages.each do |message| %>
-    <li> <%= message %> </li>
+<div class="container">
+  <% if @project.errors.any? %>
+    <% @project.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= form_with model: @project, url: story_path, local: true do |f| %>
+  <%= form_with model: @project, url: story_path, local: true do |f| %>
+    <div class="form-group row my-5">
+      <div class="col-12 col-form-label mr-5">
+        <label class="font-weight-bold"><%= f.label :story %></label>
+        <p>Write a project summary in about two lines.</p>
+      </div>
+      <div class="col-12">
+        <%= f.text_area :story, :class => "form-control", 'data-provider': :summernote %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :story %>
-    <%= f.text_area :story, 'data-provider': :summernote %>
-  </div>
+    <div class="fixed-bottom text-center border-top bg-light py-2">
+      <%= link_to "Preview", preview_project_path(@project), :class => "btn btn-success btn-lg px-4 mr-5" %>
+      <%= f.submit "Save", disable_with: 'Submiting...', :class => "btn btn-info btn-lg px-5 " %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Save", disable_with: 'Submiting...' %>
-  </div>
+  <% end %>
 
-<% end %>
+</div>
+
+<script>
+  $(document).on("turbolinks:before-cache", function() {
+    location.reload();
+  })
+</script>
