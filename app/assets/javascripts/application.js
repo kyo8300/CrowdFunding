@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require summernote/summernote-bs4.min
 //= require summernote-init
+//= require autosize
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

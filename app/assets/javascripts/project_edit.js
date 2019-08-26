@@ -51,3 +51,10 @@ $(function(){
       reader.readAsDataURL(file);
     });
   });
+
+//Reward/Edit時に商品がLimitからUnlimitedに変わったことを反映させる機能
+function CheckLimit(){
+    if(!document.getElementById('customCheck1').checked){
+        document.getElementById('togglelimit').value = 0;
+    }
+}

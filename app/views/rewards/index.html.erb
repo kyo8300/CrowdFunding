@@ -3,27 +3,40 @@
 
 <div class="container">
 
-  <div class="text-center my-5">
+  <div class="text-center my-5 bg-light">
     <%= link_to new_project_reward_path, :class => "btn btn-outline-secondary btn-lg btn-block py-5" do %>
       <%= icon('fas', 'plus-square', :class => "mr-2") %> Add a reward
     <% end %>
   </div>
 
-  <div class="">
+  <div class="container my-5">
     <% if @rewards.empty? %>
       <h3 class="text-center">You don't have any rewards yet.</h3>
     <% else %>
-      <% @rewards.each do |reward| %>
-        <%= reward.title %>
-        <%= reward.pledge %>
-        <%= reward.description %>
-        <%= reward.deliverytime %>
-        <%= reward.limit %>
-        <%= reward.ships %>
-        <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward) %>
-        <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'} %>
-        <br>
-      <% end %>
+      <div class="row">
+        <% @rewards.each do |reward| %>
+        <div class=" col-md-6 col-12">
+          <div class="card my-4 ">
+            <div class="card-body">
+              <h5 class=" my-3">Pledge amount : <%= reward.pledge %></h5>
+              <h5 class="card-title mb-3"><%= reward.title %></h5>
+              <h6 class="card-subtitle my-2 text-muted">
+                <%= truncate(reward.description, escape: false, length: 30) %>
+              </h6>
+
+              <% if reward.limit != 0 %>
+                <p>Reward quantity : <%= reward.limit %></p>
+              <% else %>
+                <p>Reward quantity : Unlimited</p>
+              <% end %>
+              <p>Estimated delivery : <%= reward.deliverytime %></p>
+              <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward), :class => "card-link" %>
+              <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'}, :class => "card-link" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

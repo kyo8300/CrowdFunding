@@ -15,7 +15,7 @@
         <p>Write a brief description of your reward.</p>
       </div>
       <div class="col-sm-6">
-        <%= f.text_field :title, :class => "form-control", :placeholder => "Merchandising products, Message cards, etc"%>
+        <%= f.text_field :title, :class => "form-control", :placeholder => "Merchandising products, Message cards, etc", :required => "true" %>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
         <p>Set a minimum pledge amount for this reward.</p>
       </div>
       <div class="col-sm-2">
-        <%= f.number_field :pledge, :class => "form-control", :placeholder => "10" %>
+        <%= f.number_field :pledge, :class => "form-control", :placeholder => "10", :required => "true" %>
       </div>
     </div>
 
@@ -36,8 +36,8 @@
         <label class="font-weight-bold"><%= f.label :description %></label>
         <p>Write a description of your reward in more detail.</p>
       </div>
-      <div class="col-sm-6">
-        <%= f.text_area :description, :class => "form-control", :placeholder => "Please enter your reward's description."%>
+      <div class="col-sm-6 py-3">
+        <%= f.text_area :description, :class => "form-control autosize-textarea", :placeholder => "Please enter your reward's description.", :onkeydown => "autosize(this)"%>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
         <p>Please set the delivery date.</p>
       </div>
       <div class="col-sm-3">
-        <%= f.date_field :deliverytime, :class => "form-control" %>
+        <%= f.date_field :deliverytime, :class => "form-control", :required => "true" %>
       </div>
     </div>
 
@@ -61,7 +61,7 @@
       <div class="custom-control custom-checkbox col-sm-2 ml-3">
         <input type="checkbox" class="custom-control-input" id="customCheck1" onclick="LimitClick()">
         <label class="custom-control-label" for="customCheck1">Limit availability</label>
-        <%= f.number_field :limit, :id => "togglelimit", :class => "form-control mt-3 pr-3", :placeholder => "100", :style => 'display: none;'%>
+        <%= f.number_field :limit, :id => "togglelimit", :class => "form-control mt-3 pr-3", :placeholder => "100", :style => 'display: none;', :value => 0 %>
       </div>
     </div>
 
@@ -71,8 +71,8 @@
         <label class="font-weight-bold"><%= f.label :ships %></label>
         <p>Write a project summary in about two lines.</p>
       </div>
-      <div class="col-sm-2">
-        <%= f.select :ships, Reward.ships.keys.map {|k| [k, k]}, {}, :class => "custom-select" %>
+      <div class="col-sm-3">
+        <%= f.select :ships, Reward.ships.keys.map {|k| [k, k]}, {}, :class => "custom-select", :required => "true" %>
       </div>
     </div>
 
@@ -85,7 +85,9 @@
 
 <script>
   BorderDevice();
+  autosize(document.getElementsByClassName('autosize-textarea'));
   window.onresize = function() {
     BorderDevice();
   }
+
 </script>
