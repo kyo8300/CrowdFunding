@@ -1,12 +1,21 @@
-<h1 class="text-center my-5">Rewards</h1>
-
 <div class="basic-form mt-5 container">
+
+  <div class="text-center my-5">
+    <h4 class="font-weight-bold">Rewards</h4>
+    <h5>Give meaningful returns to your patrons with gratitude.</h5>
+  </div>
+
   <%= form_with model: @reward, url: project_reward_path, local: true do |f| %>
-    <% if @reward.errors.any? %>
-      <% @reward.errors.full_messages.each do |message| %>
-        <li> <%= message %> </li>
+
+    <div class="text-center mx-auto" style="width: 300px;">
+      <% if @reward.errors.any? %>
+        <ul class="list-group">
+        <% @reward.errors.full_messages.each do |message| %>
+          <li class="list-group-item list-group-item-danger "><%= icon('fas', 'exclamation-triangle', :class => "mr-2") %><%= message %> </li>
+        <% end %>
+        </ul>
       <% end %>
-    <% end %>
+    </div>
 
     <div class="form-group row mt-5">
       <div class="col-sm-2"></div>
@@ -76,7 +85,7 @@
       </div>
     </div>
 
-    <div class="actions text-center">
+    <div class="actions text-center mb-4">
       <%= f.submit "Save", disable_with: 'Submiting...', :class => "btn btn-info btn-lg px-5", :onclick => "CheckLimit()" %>
     </div>
 

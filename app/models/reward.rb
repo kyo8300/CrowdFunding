@@ -5,6 +5,9 @@ class Reward < ApplicationRecord
     validates :pledge,
       numericality: {only_integer: true, greater_than: 0}
 
+      validates :limit,
+      numericality: {only_integer: true, greater_than_or_equal_to: 0}
+
     enum ships: { No_shipping: 0, OnlyCertainCountries: 1, AnywhereInTheWorld: 2}
 
     private

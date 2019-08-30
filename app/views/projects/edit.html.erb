@@ -1,19 +1,26 @@
-<h1>Basics</h1>
 <%= render 'layouts/projectnav' %>
 
 <div class="basic-form mt-5 container">
 
+  <div class="text-center my-5">
+    <h4 class="font-weight-bold">Basics</h4>
+    <h5>Make it simple for individuals to learn about your project.</h5>
+  </div>
+
   <%= form_with model: @project, local: true do |f| %>
 
+  <div class="text-center mx-auto" style="width: 300px;">
     <% if @project.errors.any? %>
-      <ul>
+      <ul class="list-group">
       <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %> </li>
+        <li class="list-group-item list-group-item-danger "><%= icon('fas', 'exclamation-triangle', :class => "mr-2") %><%= message %> </li>
       <% end %>
       </ul>
     <% end %>
+  </div>
 
-  <div class="form-group row">
+
+  <div class="form-group row my-5">
     <div class="col-sm-2"></div>
     <div class="col-sm-2 col-form-label mr-5 project-label">
       <label class=" font-weight-bold"><%= f.label :title %></label>

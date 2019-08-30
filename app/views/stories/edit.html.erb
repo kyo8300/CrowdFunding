@@ -1,4 +1,3 @@
-<h1>Story</h1>
 
 <%= render 'layouts/projectnav' %>
 
@@ -11,9 +10,12 @@
 
   <%= form_with model: @project, url: story_path, local: true do |f| %>
     <div class="form-group row my-5">
-      <div class="col-12 col-form-label mr-5">
+      <div class="col-12 col-md-6 col-form-label mr-5 mb-2">
         <label class="font-weight-bold"><%= f.label :story %></label>
-        <p>Write a project summary in about two lines.</p>
+        <p>
+          Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. 
+          Your description should tell backers everything they need to know.
+          If possible, include images to show them what your project is all about and what rewards look like.</p>
       </div>
       <div class="col-12">
         <%= f.text_area :story, :class => "form-control", 'data-provider': :summernote %>

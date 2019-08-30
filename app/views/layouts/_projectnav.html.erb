@@ -1,13 +1,16 @@
 
-<div id = "request">
-  <% unless @project.reviewing? %>
-    <%= form_with model: @project, url: submit_project_path(@project) do |f| %>
-      <%= f.submit 'Submit your project.', data: { confirm: 'Are you sure?', disable_with: 'Submitting...'} %>
+  <div id = "request" class=" my-4 container">
+    <% unless @project.reviewing? %>
+      <div class="text-center">
+        <%= form_with model: @project, url: submit_project_path(@project) do |f| %>
+          <%= f.button :type => "submit", data: { confirm: 'Are you sure?', disable_with: 'Submitting...'}, :class => "btn-custom green rounded" do %>
+            <%= icon('fas', 'paper-plane', :class => "mr-2") %>Submit your project.
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
+  </div>
 
-    <%= link_to "Preview", preview_project_path(@project) %>
-  <% end %>
-</div>
 
 <div class="select-mode">
   <ul class="nav justify-content-center nav-pills border-bottom border-top py-4">

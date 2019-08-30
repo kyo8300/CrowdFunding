@@ -19,6 +19,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+//font family
+body{
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
+
 .story.pl-4.col-md-8.col-xs-12{
     word-wrap: break-word;
 }
@@ -57,4 +62,46 @@ a:hover {
   zoom:1;
 }
 
-//word button
+//launch button
+
+.btn-custom{
+  background:transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 18px;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display:inline-block;
+  outline:none;
+  position:relative;
+  top:0;
+  text-shadow:0 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+   transition: all 0.2s ease-in-out 0s;
+}
+
+.green{
+	background:#10bc98;
+	color:#fff;
+	box-shadow: 0 3px 0 #0c8d72;
+}
+
+.green:hover{
+	background:#13d7ae;
+}
+
+.green:active, .green:focus{
+	background:#0fae8d;
+}
+
+.rounded{
+	border-radius:5px;
+}
+

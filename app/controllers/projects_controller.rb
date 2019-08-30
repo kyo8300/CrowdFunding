@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :correct_user, only: [:edit, :update, :submit, :preview]
     before_action :set_project, only: [:edit, :update, :submit, :preview]
+    before_action :reviewed_projects, only: [:show]
 
     def index
         @projects = Project.where(reviewing: true).where(reviewed: true).limit(30)
@@ -60,5 +61,10 @@ class ProjectsController < ApplicationController
 
       def set_project
         @project = current_user.projects.find(params[:id])
+      end
+
+      def reviewed_projects
+        @project = Project.find(params[:id])
+        redirect_to edit_project_path(@project) unless @project.reviewing? && @project.reviewed?
       end
 end
