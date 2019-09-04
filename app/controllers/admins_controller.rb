@@ -3,7 +3,13 @@ class AdminsController < ApplicationController
     before_action :only_admin_user
 
     def index
-      @reviewing_projects = Project.where(reviewing: true).where(reviewed: false)
+      #viewing_projects = Project.where(reviewing: true).where(reviewed: false)
+      @q = Project.where(reviewing: true).where(reviewed: false).ransack(params[:q])
+      @reviewing_projects = @q.result(dintinct: true)
+    end
+
+    def show
+      @project = Project.find(params[:id])
     end
 
     def approve
@@ -28,7 +34,22 @@ class AdminsController < ApplicationController
       end
     end
 
+    def add_comment
+      @project = Project.find(params[:id])
+
+      if @project.update_attributes(comment_params)
+        flash[:notice] = "Admin Comment saved!"
+        redirect_to admins_path
+      else
+        render 'admins/index'
+      end
+    end
+
     private
+      def comment_params
+        params.require(:project).permit(:admin_comment)
+      end
+
       def only_admin_user
         redirect_to root_path unless current_user.admin?
       end

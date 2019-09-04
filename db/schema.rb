@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_111640) do
+ActiveRecord::Schema.define(version: 2019_09_02_102230) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_111640) do
     t.integer "user_id"
     t.boolean "reviewing", default: false
     t.boolean "reviewed", default: false
+    t.string "admin_comment"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

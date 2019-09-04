@@ -1,0 +1,85 @@
+    <div class="bg-light border-top border-bottom">
+        <div class="top-heading pb-3 mb-4 container">
+            <h1 class="text-center pb-2 mt-5 font-weight-bold"><%= @project.title %></h1>
+            <h4 class="text-center text-secondary pb-2"><%= @project.subtitle %></h4>
+            <div class="row mt-5">
+                <div class="col-lg-8 col-12 mb-2">
+                    <% if @project.image? %>
+                      <%= image_tag @project.image.url, alt: 'project image', :class => "img-fluid" %>
+                    <% else %>
+                      <img class="img-fluid" src="/assets/noimage.png" alt="project image">
+                    <% end %>
+
+                    <div class="pl-3 ml-3">
+                        <div class="d-inline-block pr-3">User</div>
+                        <div class="d-inline-block p-3"><%= icon('fas', 'map-marker-alt', class: 'mr-2') %><%= @project.location %></div>
+                        <div class="d-inline-block p-3"><%= icon('fas', 'location-arrow', class: 'mr-2') %><%= @project.category %></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                  <div class="pl-4">
+                    <div class="price-display">
+                        <h3 class="pt-4">US$ 0</h3>
+                        <p>pledged of US$ <%= @project.goal %> goal</p>
+                    </div>
+
+                    <div class="backers mt-3">
+                        <h3>0</h3> backers
+                    </div>
+
+                    <div class="mt-3">
+                        <h3><%= @project.date_diff %></h3> days to go
+                    </div>
+                  </div>
+                    <div class="back-button mt-5">
+                        <a href="#" class="btn btn-primary btn-lg btn-block">Back this project</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="description container mt-5">
+        <div class="row">
+            <div class="story pl-3 col-md-8 col-xs-12 mb-4">
+              <h3 class="mb-5">About</h3>
+              <div class="summer" id="foo">
+                <% unless @project.story.nil? %>
+                  <%= @project.story.html_safe %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="reward col-md-4 col-xs-12">
+              <h3 class="mb-5">Rewards</h3>
+              <% @project.rewards.each do |reward| %>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Pledge $<%= reward.pledge %> or more</h5>
+                        <div class="card-text">
+                          <h6><%= reward.title %></h6>
+                          <p class="text-secondary"><%= simple_format(h(reward.description)) %></p>
+                          <% if reward.limit != 0 %>
+                          <div class="limit">
+                            <p class="text-secondary mb-0">LIMITED:</p>
+                            <p><%= reward.limit %></p>
+                          </div>
+                          <% end %>
+                          <div class="delivery-time">
+                            <p class="text-secondary mb-0">ESTIMATED DERIVERY:</p>
+                            <p><%= reward.deliverytime %></p>
+                          </div>
+                          <div class="ship-time">
+                            <p class="text-secondary mb-0">SHIPS TO:</p>
+                            <p><%= reward.ships %></p>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Select this reward</a>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+        </div>
+    </div>
