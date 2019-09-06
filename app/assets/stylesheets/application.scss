@@ -105,3 +105,54 @@ a:hover {
 	border-radius:5px;
 }
 
+//notice layout
+.alert {
+	text-align: center;
+}
+
+.alert-info {
+    background-color: #bde9ff;
+    border-color: #bde9ff;
+    color: #4c6977;
+}
+
+.alert-danger {
+    background-color: #f3c0c0;
+    border-color: #f3c0c0;
+    color: #3e3a3a;
+}
+
+//search bar
+.form-search:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.search-icon{
+  padding-top: 13px;
+}
+
+//user toggle button
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.dropdown-toggle:after {
+  display: none;
+}

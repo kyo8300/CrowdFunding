@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     before_action :reviewed_projects, only: [:show]
 
     def index
-        @projects = Project.where(reviewing: true).where(reviewed: true).limit(30)
+        @projects = Project.where(reviewing: true).where(reviewed: true)
     end
 
     def show
