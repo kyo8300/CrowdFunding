@@ -153,6 +153,11 @@ a:hover {
   top: -1px;
 }
 
-.dropdown-toggle:after {
+.user-page .dropdown-toggle:after {
   display: none;
+}
+
+//languages, currency toggle button
+.lang-currency-button {
+  border-color: #000000;
 }

@@ -17,31 +17,26 @@
       </div>
 
       <div class="user-page col-md-4 clearfix">
-        <div class="dropdown">
-          <button class="btn btn-secondary btn-circle float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user"></i>
-          </button>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-circle float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </button>
 
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="float-right">
+            <div><%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Log in", new_user_session_path %></div>
+          </div>
+        <% end %>
       </div>
 
     </div>
-
-<!--
-  <div class="border-bottom">
-    <p class="text-center">ヘッダー</p>
-    <% if user_signed_in? %>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path %>
-    <% end %>
-  </div>
-!-->
   </div>
 </header>

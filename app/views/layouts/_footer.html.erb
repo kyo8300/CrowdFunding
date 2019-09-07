@@ -1,5 +1,33 @@
-<footer>
+<footer class="my-3">
   <div class="text-center border-top">
-    フッター
+    <div class="copyright text-center mt-3">
+      SampleApp@2019
+    <div>
+
+    <div class="select-lang-currency my-3 row justify-content-center">
+      <div class="dropdown mb-1 mx-2">
+
+        <button class="btn btn-light dropdown-toggle lang-currency-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Languages
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to('English', "#", :class => 'dropdown-item') %>
+          <%= link_to('日本語', "#", :class => 'dropdown-item') %>
+          <%= link_to('中文', "#", :class => 'dropdown-item') %>
+        </div>
+      </div>
+
+      <div class="dropdown mb-1 mx-2">
+        <button class="btn btn-light dropdown-toggle lang-currency-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Currency
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to('$ US Dollar (USD)', "#", :class => 'dropdown-item') %>
+          <%= link_to('¥ Japanese Yen (JYP)', "#", :class => 'dropdown-item') %>
+          <%= link_to('NT$ Taiwan Dollar (TWD)', "#", :class => 'dropdown-item') %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </footer>
