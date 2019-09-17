@@ -227,3 +227,22 @@ a:hover {
 .form .register-form {
   display: none;
 }
+
+// The color of a tag
+a,
+a.page-link {
+  color: #251e1e;
+}
+
+a:hover {
+  color: #888888;
+}
+
+li.page-item.active > a.page-link {
+  background-color: #008800;
+  border-color: #008800;
+}
+
+a.page-link:hover {
+  color: #00bb00;
+}

@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
     def index
       #viewing_projects = Project.where(reviewing: true).where(reviewed: false)
       @q = Project.where(reviewing: true).where(reviewed: false).ransack(params[:q])
-      @reviewing_projects = @q.result(dintinct: true)
+      @reviewing_projects = @q.result(dintinct: true).page(params[:page]).per(10)
     end
 
     def show

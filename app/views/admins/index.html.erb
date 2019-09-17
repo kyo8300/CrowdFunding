@@ -52,5 +52,6 @@
       <td class="btn btn-danger ml-2 px-4 mt-1"><%= link_to "Reject", reject_admin_path(reviewing_project), method: :patch, class: "text-white" %></td>
     </tr>
    <% end %>
+   <%= paginate @reviewing_projects %>
   </tbody>
 </table>

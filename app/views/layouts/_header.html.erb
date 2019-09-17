@@ -24,10 +24,18 @@
             </button>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
-              <a class="dropdown-item" href="#">Action</a>
+              <div class="dropdown-item" href="#">
+                <%= link_to "#" do %>
+                  <%= icon('fas', 'pencil-alt', :class => "mr-2") %>My projects
+                <% end %>
+              </div>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-item">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= icon('fas', 'sign-out-alt', :class => "mr-2") %>Log out
+                <% end %>
+              </div>
             </div>
           </div>
         <% else %>
