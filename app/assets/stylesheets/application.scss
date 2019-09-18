@@ -246,3 +246,34 @@ li.page-item.active > a.page-link {
 a.page-link:hover {
   color: #00bb00;
 }
+
+//project/new page
+.start-project {
+  position: relative;
+  height: 100vh;
+  min-height: 300px;
+  background-image: -webkit-url('../img/create-projects.jpg') no-repeat center
+    center/cover;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: url('../img/create-projects.jpg') no-repeat center center/cover;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-bottom: 0;
+}
+
+.express-text {
+  font-size: 3rem;
+}
+
+.btn-gradient-radius {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  background-image: linear-gradient(45deg, #ffc107 0%, #ff8b5f 100%);
+  transition: 0.4s;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #ffc107 0%, #f76a35 100%);
+}

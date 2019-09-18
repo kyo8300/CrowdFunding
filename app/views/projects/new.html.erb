@@ -1,4 +1,17 @@
-<h1>Let's get started!</h1>
+<!--<h1>Let's get started!</h1>
 <%= form_with model: @project, local: true do |f| %>
   <%= f.submit "Start a project" %>
 <% end %>
+-->
+
+<div class="start-project jumbotron">
+  <div class="start-project-inner container-fluid">
+    <h1 class="text-white font-weight-bold text-center my-3 express-text">Express your creativity to others.</h1>
+    <h3 class="text-white text-center my-5 pt-4">You can create a project for free right now !</h3>
+    <div class="d-flex justify-content-center my-5 pt-5">
+      <%= form_with model: @project, local: true do |f| %>
+        <%= f.submit "Start a project", :class => "btn btn-lg btn-gradient-radius px-4 py-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
