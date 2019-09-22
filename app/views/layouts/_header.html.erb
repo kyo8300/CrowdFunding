@@ -25,11 +25,11 @@
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <div class="dropdown-item" href="#">
-                <%= link_to "#" do %>
+                <%= link_to myprojects_path do %>
                   <%= icon('fas', 'pencil-alt', :class => "mr-2") %>My projects
                 <% end %>
               </div>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#"><%= icon('fas', 'donate', :class => "mr-2") %>Backed projects</a>
               <a class="dropdown-item" href="#">Something else here</a>
               <div class="dropdown-item">
                 <%= link_to destroy_user_session_path, method: :delete do %>

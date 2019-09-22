@@ -27,7 +27,7 @@
       <p>Write a catchy and simple title.</p>
     </div>
     <div class="col-sm-6">
-      <%= f.text_field :title, :class => "form-control", :placeholder => "Please enter your project title.", onkeyup: 'ShowLength(value)', :maxlength => '30' %>
+      <%= f.text_field :title, :class => "form-control", :placeholder => "Please enter your project title.", onkeyup: 'ShowLength(value)', :maxlength => '30', disabled: @project.reviewing? && @project.reviewed? %>
       <div id="wordcnt" class="text-right">
         <% if @project.title.present? %>
           <%= @project.title.length %>/30
@@ -85,7 +85,7 @@
       <p>So please make sure not to set an unachievable goal.</p>
     </div>
     <div class="col-sm-2">
-      <%= f.number_field :goal, :class => "form-control", :placeholder => "300" %>
+      <%= f.number_field :goal, :class => "form-control", :placeholder => "300", disabled: @project.reviewing? && @project.reviewed? %>
     </div>
   </div>
 
@@ -97,7 +97,7 @@
       <p>Projects with a duration of 65 days or less have a higher success rate.</p>
     </div>
     <div class="col-sm-3">
-      <%= f.date_field :duration, :class => "custom-select" %>
+      <%= f.date_field :duration, :class => "custom-select", disabled: @project.reviewing? && @project.reviewed? %>
     </div>
   </div>
 

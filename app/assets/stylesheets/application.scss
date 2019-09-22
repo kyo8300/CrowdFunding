@@ -247,6 +247,11 @@ a.page-link:hover {
   color: #00bb00;
 }
 
+a.edit-reward,
+a.destroy-reward {
+  color: #428bca;
+}
+
 //project/new page
 .start-project {
   position: relative;

@@ -1,6 +1,6 @@
 
+<% unless @project.reviewing? %>
   <div id = "request" class=" my-4 container">
-    <% unless @project.reviewing? %>
       <div class="text-center">
         <%= form_with model: @project, url: submit_project_path(@project) do |f| %>
           <%= f.button :type => "submit", data: { confirm: 'Are you sure?', disable_with: 'Submitting...'}, :class => "btn-custom green rounded" do %>
@@ -8,8 +8,8 @@
           <% end %>
         <% end %>
       </div>
-    <% end %>
   </div>
+<% end %>
 
 
 <div class="select-mode">

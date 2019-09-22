@@ -35,8 +35,8 @@
               <% end %>
 
               <p>Estimated delivery : <%= reward.deliverytime %></p>
-              <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward), :class => "card-link" %>
-              <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'}, :class => "card-link" %>
+              <%= link_to "Edit", edit_project_reward_path(reward.project_id,reward), :class => "card-link edit-reward", style: "#{ @project.reviewing && @project.reviewed ? 'display: none;' : '' }" %>
+              <%= link_to "Destroy", project_reward_path(reward.project_id,reward), method: :delete, data: {confirm: 'Are you sure?'}, :class => "card-link destroy-reward", style: "#{ @project.reviewing && @project.reviewed ? 'display: none;' : '' }" %>
             </div>
           </div>
         </div>

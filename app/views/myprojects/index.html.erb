@@ -1,0 +1,67 @@
+   <div class="container mb-5">
+      <h3 class="mt-5 font-weight-bold"><%= icon('fas', 'pencil-alt', :class => "mr-2") %>My projects</h3>
+      <div class="row d-flex">
+         <% @my_projects.each do |project| %>
+         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5">
+            <!-- Card -->
+
+            <div class="card border-0 shadow">
+               <!-- Card image -->
+               <div class="view">
+                 <%= link_to edit_project_path(project), :class => "project-img" do %>
+                  <% if project.image? %>
+                    <%= image_tag project.image.url, alt: 'project image', :class => "img-fluid card-img-top rounded-top" %>
+                  <% else %>
+                    <img class="img-fluid card-img-top rounded-top" src="/assets/noimage.png" alt="project image">
+                  <% end %>
+                 <% end %>
+                  <a href="#!">
+                     <div class="mask rgba-white-slight"></div>
+                  </a>
+               </div>
+               <!-- Card content -->
+               <div class="card-body border rounded-bottom">
+                  <a href="#" class="card-text small mr-1 d-inline-block">
+                    <%= project.category %>
+                  </a>
+                  <div class="card-text small d-inline-block mb-2">
+                    <% if project.reviewing? && project.reviewed? %>
+                      (Public)
+                    <% else %>
+                      (Private)
+                    <% end %>
+                  </div>
+                  <!-- Title -->
+                  <%= link_to edit_project_path(project), :class => "card-title project-title" do %>
+                    <%= project.title %>
+                  <% end %>
+                  <!-- Description -->
+                  <hr>
+                  <ul class="list-unstyled d-flex justify-content-between mb-3 text-center small">
+                     <li class="pledged">
+                        <p class="mb-1 font-weight-bold text-dark">Pledged</p>
+                        <span class="amount"><%= project.goal %></span>
+                     </li>
+                     <li class="funded">
+                        <p class="mb-1 font-weight-bold text-dark">Funded</p>
+                        <span class="amount">$0</span>
+                     </li>
+                     <li class="days">
+                        <p class="mb-1 font-weight-bold text-dark">Days Left</p>
+                        <span class="amount"><%= project.date_diff %></span>
+                     </li>
+                  </ul>
+                  <div class="progress mb-2">
+                     <!-- ${} が使える -->
+                     <div class="progress-bar bg-success" role="progressbar" aria-valuenow="55" aria-valuemin="91" aria-valuemax="100" style="width:62%">62%</div>
+                  </div>
+                  <!-- end: progress bard -->
+               </div>
+            </div>
+            <!-- Card -->
+         </div>
+         <% end %>
+         <!-- end col -->
+         <div class="mx-auto mt-5"><%= paginate @my_projects, window: 2 %></div>
+      </div>
+   </div>

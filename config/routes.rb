@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :myprojects, only: [:index]
   resources :stories, only: [:edit, :update]
 end
