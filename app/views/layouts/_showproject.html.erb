@@ -13,7 +13,7 @@
                     <div class="pl-3 ml-3">
                         <div class="d-inline-block pr-3">User</div>
                         <div class="d-inline-block p-3"><%= icon('fas', 'map-marker-alt', class: 'mr-2') %><%= @project.location %></div>
-                        <div class="d-inline-block p-3"><%= icon('fas', 'location-arrow', class: 'mr-2') %><%= @project.category %></div>
+                        <div class="d-inline-block p-3"><%= icon('fas', 'location-arrow', class: 'mr-2') %><%= link_to @project.category, projects_path(category: @project.category) %></div>
                     </div>
                 </div>
 

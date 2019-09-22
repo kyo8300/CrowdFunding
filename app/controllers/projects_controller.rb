@@ -5,7 +5,11 @@ class ProjectsController < ApplicationController
     before_action :reviewed_projects, only: [:show]
 
     def index
-        @projects = Project.where(reviewing: true).where(reviewed: true).page(params[:page]).per(10)
+        if params[:category]
+            @projects = Project.where(reviewing: true).where(reviewed: true).where(category: params[:category]).page(params[:page]).per(12)
+        else
+            @projects = Project.where(reviewing: true).where(reviewed: true).page(params[:page]).per(12)
+        end
     end
 
     def show

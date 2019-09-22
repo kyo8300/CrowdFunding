@@ -2,6 +2,21 @@
      <%= link_to "Start a project", new_project_path, :class => "btn btn-info btn-lg" %>
    </div>
 
+   <% if params[:category] %>
+      <h4 class="mt-5 font-weight-bold container"><%= icon('fas', 'tag', :class => "mr-2") %><%= params[:category] %></h4>
+   <% elsif  params[:q]%>
+      <h4 class="mt-5 font-weight-bold container">
+        <%= icon('fas', 'tag', :class => "mr-2") %>
+        <%= @search_projects.count %> results for "<%= params[:q][:story_or_title_cont] %>"
+      </h4>
+   <% else %>
+      <div class="text-center border-bottom py-3">
+         <% Project.categories.each do |category| %>
+           <%= link_to category[0], projects_path(category: category[0]), :class => "mx-3 text-secondary" %>
+         <% end %>
+      </div>
+   <% end %>
+
    <div class="container mb-5">
       <div class="row d-flex">
          <% @search_projects.each do |project| %>
@@ -24,7 +39,7 @@
                </div>
                <!-- Card content -->
                <div class="card-body border rounded-bottom">
-                  <a href="#" class="card-text small mb-2 d-block"><%= project.category %></a>
+                  <%= link_to project.category, projects_path(category: project.category) , :class => "card-text small mb-2 d-block" %>
                   <!-- Title -->
                   <%= link_to project_path(project), :class => "card-title project-title" do %><%= project.title %><% end %>
                   <!-- Description -->
@@ -54,6 +69,6 @@
          </div>
          <% end %>
          <!-- end col -->
-         <div class="mx-auto mt-5"><%= paginate @search_projects, window: 2 %></div>
       </div>
+      <div class="d-flex justify-content-center mt-5"><%= paginate @search_projects, window: 2 %></div>
    </div>
