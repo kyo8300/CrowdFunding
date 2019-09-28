@@ -1,15 +1,3 @@
 <div class="show-project">
   <%= render 'layouts/showproject' %>
 </div>
-
-<script>
-  let elems = document.getElementById('foo');
-  let imgElems = elems.getElementsByTagName('img');
-  for(let i = 0; i < imgElems.length; i++){
-      imgElems.item(i).classList.add('img-fluid');
-  }
-  let videoElems = elems.getElementsByTagName('iframe');
-  for(let i = 0; i < videoElems.length; i++){
-      videoElems.item(i).parentElement.classList.add('embed-responsive', 'embed-responsive-16by9');
-  }
-</script>

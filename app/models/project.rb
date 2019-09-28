@@ -16,6 +16,18 @@ class Project < ApplicationRecord
       return dif.to_i
     end
 
+    def self.approved_projects
+      self.where(reviewing: true).where(reviewed: true)
+    end
+
+    def self.reviewing_projects
+      self.where(reviewing: true).where(reviewed: false)
+    end
+
+    def self.private_projects
+      self.where(reviewing: false).where(reviewed: false)
+    end
+
     private
       def duration_cannot_be_in_the_past
           errors.add(:duration, "can't be in the past") if duration < Date.today

@@ -1,6 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation">
-    <div class="text-center mx-auto my-4" style="width: 275px;">
+    <div class="text-center mx-auto my-4" style="width: 25px;">
         <ul class="list-group">
         <% resource.errors.full_messages.each do |message| %>
           <li class="list-group-item list-group-item-danger "><%= icon('fas', 'exclamation-triangle', :class => "mr-2") %><%= message %> </li>

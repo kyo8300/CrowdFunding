@@ -5,15 +5,3 @@
       <div class="btn"><%= link_to 'Back to edit page', edit_project_path(@project), class: "btn btn-success " %></div>
     </div>
 </div>
-
-<script>
-  let elems = document.getElementById('foo');
-  let imgElems = elems.getElementsByTagName('img');
-  for(let i = 0; i < imgElems.length; i++){
-      imgElems.item(i).classList.add('img-fluid');
-  }
-  let videoElems = elems.getElementsByTagName('iframe');
-  for(let i = 0; i < videoElems.length; i++){
-      videoElems.item(i).parentElement.classList.add('embed-responsive', 'embed-responsive-16by9');
-  }
-</script>

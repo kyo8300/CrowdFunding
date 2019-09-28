@@ -10,10 +10,10 @@
                       <img class="img-fluid" src="/assets/noimage.png" alt="project image">
                     <% end %>
 
-                    <div class="pl-3 ml-3">
-                        <div class="d-inline-block pr-3">User</div>
-                        <div class="d-inline-block p-3"><%= icon('fas', 'map-marker-alt', class: 'mr-2') %><%= @project.location %></div>
-                        <div class="d-inline-block p-3"><%= icon('fas', 'location-arrow', class: 'mr-2') %><%= link_to @project.category, projects_path(category: @project.category) %></div>
+                    <div class="mt-2">
+                        <div class="d-inline-block pr-2"><%= icon('fas', 'user', :class => "mr-2") %><%= link_to @project.user.username, user_path(@project.user) %></div>
+                        <div class="d-inline-block p-2"><%= icon('fas', 'map-marker-alt', class: 'mr-2') %><%= @project.location %></div>
+                        <div class="d-inline-block p-2"><%= icon('fas', 'location-arrow', class: 'mr-2') %><%= link_to @project.category, projects_path(category: @project.category) %></div>
                     </div>
                 </div>
 
@@ -53,6 +53,23 @@
             </div>
 
             <div class="reward col-md-4 col-xs-12">
+              <div class="card text-center my-5 user-card">
+                <div class="user-card-img">
+                  <%= link_to user_path(@project.user) do %>
+                    <% if @project.user.avatar? %>
+                      <%= image_tag @user.avatar.thumb.url, alt: 'user avatar', :class => "img-fluid" %>
+                    <% else %>
+                      <img class="img-fluid rounded-circle" src="/assets/noavatar.png" alt="user image" width="80" height="80">
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="card-body pt-5">
+                  <h5 class="card-title pt-3"><%= @project.user.username %></h5>
+                  <p class="card-text"><%= @project.user.bio %></p>
+                  <%= link_to "Go his profile",user_path(@project.user), :class => "btn btn-primary" %>
+                </div>
+              </div>
+
               <h3 class="mb-5">Rewards</h3>
               <% @project.rewards.each do |reward| %>
                 <div class="card mb-4">
@@ -83,3 +100,15 @@
             </div>
         </div>
     </div>
+
+<script>
+  let elems = document.getElementById('foo');
+  let imgElems = elems.getElementsByTagName('img');
+  for(let i = 0; i < imgElems.length; i++){
+      imgElems.item(i).classList.add('img-fluid');
+  }
+  let videoElems = elems.getElementsByTagName('iframe');
+  for(let i = 0; i < videoElems.length; i++){
+      videoElems.item(i).parentElement.classList.add('embed-responsive', 'embed-responsive-16by9');
+  }
+</script>

@@ -1,0 +1,45 @@
+<div class="container-fluid user-show">
+  <div class="user-show-header bg-light">
+    <div class="row user-avatar pt-5 pb-3 justify-content-center">
+        <% if @user.avatar? %>
+            <%= image_tag @user.avatar.url, alt: 'user avatar', :class => "img-fluid" %>
+        <% else %>
+            <img class="img-fluid rounded-circle" src="/assets/noavatar.png" alt="user avatar" width="150" height="150" >
+        <% end %>
+    </div>
+    <div class="user-info text-center">
+      <h2 class="font-weight-bold mb-3"><%= @user.username %></h2>
+      <% if @user.bio? %>
+        <h5 class="mb-3"><%= @user.bio %></h5>
+      <% end %>
+
+      <% if @user.website? %>
+        <a class="mb-5 text-secondary" href="<%= @user.website %>"><%= icon('fas', 'globe', :class => "mx-1", :style => 'font-size: 20px;') %></a>
+      <% end %>
+      <% if @user.twitter? %>
+        <a class="mb-5 text-secondary" href="<%= @user.twitter %>"><%= icon('fab', 'twitter-square', :class => "mx-1", :style => 'font-size: 20px;') %></a>
+      <% end %>
+      <% if @user.instagram? %>
+        <a class="mb-5 text-secondary" href="<%= @user.instagram %>"><%= icon('fab', 'instagram', :class => "mx-1", :style => 'font-size: 20px;') %></a>
+      <% end %>
+
+      <% if @user.location? %>
+        <p class="my-2 text-secondary"><%= @user.location %></p>
+      <% end %>
+
+      <p class="text-secondary pb-4 pt-1">Joined <%= @user.created_at.strftime('%b %Y') %></p>
+    </div>
+
+  </div>
+
+  <div class="user-show-content row justify-content-center border-bottom">
+    <ul class="nav nav-tab-user">
+        <li class="nav-item">
+            <%= link_to "Created Projects #{@user.projects.count}" , user_path(@user), :class => "nav-link user-nav-content #{ params[:action] == 'show' ? 'active' : '' }" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Backed Projects 0" , backed_user_path(@user), :class => "nav-link user-nav-content #{ params[:action] == 'backed' ? 'active' : '' }"%>
+        </li>
+    </ul>
+  </div>
+</div>

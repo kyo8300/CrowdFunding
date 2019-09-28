@@ -30,7 +30,16 @@
                 <% end %>
               </div>
               <a class="dropdown-item" href="#"><%= icon('fas', 'donate', :class => "mr-2") %>Backed projects</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-item">
+                <%= link_to user_path(current_user) do %>
+                  <%= icon('fas', 'user', :class => "mr-2") %>Profile
+                <% end %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to edit_user_path(current_user) do %>
+                  <%= icon('fas', 'cog', :class => "mr-2") %>Setting
+                <% end %>
+              </div>
               <div class="dropdown-item">
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <%= icon('fas', 'sign-out-alt', :class => "mr-2") %>Log out

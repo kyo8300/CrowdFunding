@@ -40,7 +40,7 @@
       <th scope="row"><%= link_to reviewing_project.id, admin_path(reviewing_project) %></th>
       <td><%= reviewing_project.goal %></td>
       <td><%= reviewing_project.duration %></td>
-      <td><%= reviewing_project.user.email %></td>
+      <td><%= reviewing_project.user.username %></td>
       <td><%= reviewing_project.created_at %></td>
       <td>
         <%= form_with model: reviewing_project, url: add_comment_admin_path(reviewing_project) do |f| %>
