@@ -49,15 +49,14 @@
 
             <div class="my-4">
               <%= f.label :avatar %>
+              <p>Recommnd size: Greater than 200px*200px</p>
               <div class="input-group">
-                <%= f.file_field :avatar, :class => "form-control-file", id: "file" %>
+                <%= f.file_field :avatar, :class => "form-control-file", id: "post_img" %>
                 <%= f.hidden_field :avatar_cache %>
-                <div id="img_field" class="mt-5">
-                    <%= image_tag(@user.avatar.thumb.url) if @user.avatar? %>
+                <div class="mt-5">
+                  <%= image_tag @user.avatar.thumb.url, class: "avatar_present_img" if @user.avatar? %>
                 </div>
-                <div class="invalid-feedback" style="width: 100%;">
-                  Your image is required.
-                </div>
+                <img id="avatar_img_prev" src="#" class='d-none' width="150" height="150"  />
               </div>
             </div>
 
@@ -77,13 +76,13 @@
             </div>
 
             <div class="my-4">
-              <%= icon('fab', 'twitter-square', :class => "mr-2") %><%= f.label :twitter %>
-              <%= f.text_field :twitter, :class => "form-control", :placeholder => "https://twitter.com/Twitter" %>
+              <%= icon('fab', 'twitter-square', :class => "mr-2") %><%= f.label :twitter %> (Username)
+              <%= f.text_field :twitter, :class => "form-control", :placeholder => "Twitter" %>
             </div>
 
             <div class="my-4">
-              <%= icon('fab', 'instagram', :class => "mr-2") %><%= f.label :instagram %>
-              <%= f.text_field :instagram, :class => "form-control", :placeholder => "https://www.instagram.com/instagram/" %>
+              <%= icon('fab', 'instagram', :class => "mr-2") %><%= f.label :instagram %> (Username)
+              <%= f.text_field :instagram, :class => "form-control", :placeholder => "instagram" %>
             </div>
 
             <hr class="my-4">

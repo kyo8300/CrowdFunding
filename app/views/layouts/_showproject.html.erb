@@ -57,7 +57,7 @@
                 <div class="user-card-img">
                   <%= link_to user_path(@project.user) do %>
                     <% if @project.user.avatar? %>
-                      <%= image_tag @user.avatar.thumb.url, alt: 'user avatar', :class => "img-fluid" %>
+                      <%= image_tag @project.user.avatar.thumb.url, alt: 'user avatar', :class => "img-fluid rounded-circle" %>
                     <% else %>
                       <img class="img-fluid rounded-circle" src="/assets/noavatar.png" alt="user image" width="80" height="80">
                     <% end %>
@@ -101,13 +101,14 @@
         </div>
     </div>
 
+
 <script>
-  let elems = document.getElementById('foo');
-  let imgElems = elems.getElementsByTagName('img');
+  var elems = document.getElementById('foo');
+  var imgElems = elems.getElementsByTagName('img');
   for(let i = 0; i < imgElems.length; i++){
       imgElems.item(i).classList.add('img-fluid');
   }
-  let videoElems = elems.getElementsByTagName('iframe');
+  var videoElems = elems.getElementsByTagName('iframe');
   for(let i = 0; i < videoElems.length; i++){
       videoElems.item(i).parentElement.classList.add('embed-responsive', 'embed-responsive-16by9');
   }

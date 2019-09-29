@@ -2,7 +2,7 @@
   <div class="user-show-header bg-light">
     <div class="row user-avatar pt-5 pb-3 justify-content-center">
         <% if @user.avatar? %>
-            <%= image_tag @user.avatar.url, alt: 'user avatar', :class => "img-fluid" %>
+            <%= image_tag @user.avatar.url, alt: 'user avatar', :class => "img-fluid rounded-circle" %>
         <% else %>
             <img class="img-fluid rounded-circle" src="/assets/noavatar.png" alt="user avatar" width="150" height="150" >
         <% end %>
@@ -17,10 +17,10 @@
         <a class="mb-5 text-secondary" href="<%= @user.website %>"><%= icon('fas', 'globe', :class => "mx-1", :style => 'font-size: 20px;') %></a>
       <% end %>
       <% if @user.twitter? %>
-        <a class="mb-5 text-secondary" href="<%= @user.twitter %>"><%= icon('fab', 'twitter-square', :class => "mx-1", :style => 'font-size: 20px;') %></a>
+        <a class="mb-5 text-secondary" href="https://www.twitter.com/<%= @user.twitter %>/"><%= icon('fab', 'twitter-square', :class => "mx-1", :style => 'font-size: 20px;') %></a>
       <% end %>
       <% if @user.instagram? %>
-        <a class="mb-5 text-secondary" href="<%= @user.instagram %>"><%= icon('fab', 'instagram', :class => "mx-1", :style => 'font-size: 20px;') %></a>
+        <a class="mb-5 text-secondary" href="https://www.instagram.com/<%= @user.instagram %>/"><%= icon('fab', 'instagram', :class => "mx-1", :style => 'font-size: 20px;') %></a>
       <% end %>
 
       <% if @user.location? %>

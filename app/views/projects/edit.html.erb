@@ -67,12 +67,13 @@
       <p>Add an image that attract viewer's attention.</p>
       <p>preferred image size: 1024x576 pixels (16 : 9 ratio).</p>
     </div>
-    <div class="col-sm-6" onClick="$('#file').click()">
-      <%= f.file_field :image, :class => "form-control-file", id: "file" %>
+    <div class="col-sm-6">
+      <%= f.file_field :image, :class => "form-control-file", id: "post_img" %>
       <%= f.hidden_field :image_cache %>
-      <div id="img_field" class="mt-5">
-        <%= image_tag(@project.image.thumb.url) if @project.image? %>
+      <div class="mt-5">
+        <%= image_tag @project.image.thumb.url, class: "avatar_present_img" if @project.image? %>
       </div>
+      <img id="avatar_img_prev" src="#" class='d-none' width="320" height="180"  />
     </div>
   </div>
 
