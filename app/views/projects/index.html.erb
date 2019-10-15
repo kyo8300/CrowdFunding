@@ -4,11 +4,15 @@
 
    <% if params[:category] %>
       <h4 class="mt-5 font-weight-bold container"><%= icon('fas', 'tag', :class => "mr-2") %><%= params[:category] %></h4>
-   <% elsif  params[:q]%>
-      <h4 class="mt-5 font-weight-bold container">
-        <%= icon('fas', 'tag', :class => "mr-2") %>
-        <%= @search_projects.count %> results for "<%= params[:q][:story_or_title_cont] %>"
-      </h4>
+   <% elsif  params[:q] %>
+      <% if params[:q][:category] %>
+         <h4 class="mt-5 font-weight-bold container"><%= icon('fas', 'tag', :class => "mr-2") %><%= params[:q][:category] %></h4>
+      <% else %>
+         <h4 class="mt-5 font-weight-bold container">
+         <%= icon('fas', 'tag', :class => "mr-2") %>
+         <%= @search_projects.count %> results for "<%= params[:q][:story_or_title_cont] %>"
+         </h4>
+      <% end %>
    <% else %>
       <div class="text-center border-bottom py-3">
          <% Project.categories.each do |category| %>
@@ -18,6 +22,19 @@
    <% end %>
 
    <div class="container mb-5">
+      <%= search_form_for @search, url: projects_path do |f| %>
+      <div class="bg-light py-3 form-inline justify-content-center mt-4">
+        <div class="m-2">
+          Category:    <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, { selected: params[:q] ? params[:q][:category] : 'Arts' }, onchange: 'this.form.submit()', :class => "custom-select" %>
+        </div>
+        <div class="m-2">
+          <%= sort_link(@search, :created_at, default_order: :desc) do %>
+            <div class="btn btn-secondary">Created Date</div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
       <div class="row d-flex">
          <% @search_projects.each do |project| %>
          <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5">

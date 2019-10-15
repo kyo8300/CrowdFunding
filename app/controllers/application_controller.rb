@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
         @search = Project.where(reviewing: true).where(reviewed: true).ransack(params[:q])
         if params[:category]
             @search_projects = Project.where(reviewing: true).where(reviewed: true).where(category: params[:category]).page(params[:page]).per(12)
+        elsif params[:q]
+            if params[:q][:category]
+              @search_projects = Project.where(reviewing: true).where(reviewed: true).where(category: params[:q][:category]).page(params[:page]).per(12)
+            else
+              @search_projects = @search.result.page(params[:page]).per(12)
+            end
         else
             @search_projects = @search.result.page(params[:page]).per(12)
         end

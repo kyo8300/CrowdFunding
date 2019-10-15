@@ -35,7 +35,7 @@
   <div class="user-show-content row justify-content-center border-bottom">
     <ul class="nav nav-tab-user">
         <li class="nav-item">
-            <%= link_to "Created Projects #{@user.projects.count}" , user_path(@user), :class => "nav-link user-nav-content #{ params[:action] == 'show' ? 'active' : '' }" %>
+            <%= link_to "Created Projects #{@user.projects.approved_projects.count}" , user_path(@user), :class => "nav-link user-nav-content #{ params[:action] == 'show' ? 'active' : '' }" %>
         </li>
         <li class="nav-item">
             <%= link_to "Backed Projects 0" , backed_user_path(@user), :class => "nav-link user-nav-content #{ params[:action] == 'backed' ? 'active' : '' }"%>
