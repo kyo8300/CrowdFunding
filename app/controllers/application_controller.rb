@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
     before_action :set_search
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    rescue_from CanCan::AccessDenied do |exception|
+      # root_urlにかっ飛ばす。
+      redirect_to root_url
+    end
+
     def set_search
         @search = Project.where(reviewing: true).where(reviewed: true).ransack(params[:q])
         if params[:category]

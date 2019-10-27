@@ -25,7 +25,7 @@
       <%= search_form_for @search, url: projects_path do |f| %>
       <div class="bg-light py-3 form-inline justify-content-center mt-4">
         <div class="m-2">
-          Category:    <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, { selected: params[:q] ? params[:q][:category] : 'Arts' }, onchange: 'this.form.submit()', :class => "custom-select" %>
+          Category:    <%= f.select :category, Project.categories.keys.map {|k| [k, k]}, { selected: params[:q] ? params[:q][:category] : params[:category] }, onchange: 'this.form.submit()', :class => "custom-select" %>
         </div>
         <div class="m-2">
           <%= sort_link(@search, :created_at, default_order: :desc) do %>
