@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :uploads, only: [:create, :destroy]
+
   resources :myprojects, only: [:index]
   resources :stories, only: [:edit, :update]
 end
