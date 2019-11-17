@@ -22,6 +22,7 @@
    <% end %>
 
    <div class="container mb-5">
+     <% if params[:q] || params[:category] %>
       <%= search_form_for @search, url: projects_path do |f| %>
       <div class="bg-light py-3 form-inline justify-content-center mt-4">
         <div class="m-2">
@@ -34,6 +35,7 @@
         </div>
       </div>
       <% end %>
+     <% end %>
 
       <div class="row d-flex">
          <% @search_projects.each do |project| %>
